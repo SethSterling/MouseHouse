@@ -32,6 +32,7 @@ namespace MouseHouse
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(IdentityHelper.SetIdentityOptions)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -91,6 +92,16 @@ namespace MouseHouse
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            // creating roles
+            IServiceScope serviceProvider = app.ApplicationServices
+                                               .GetRequiredService<IServiceProvider>()
+                                               .CreateScope();
+            IdentityHelper.CreateRoles(serviceProvider.ServiceProvider,
+                                       IdentityHelper.Administrator,
+                                       IdentityHelper.Customer).Wait();
+            // create the default administrator
+            IdentityHelper.CreateDefaultAdministrator(serviceProvider.ServiceProvider).Wait();
         }
     }
 }
