@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,30 @@ namespace MouseHouse.Models
 {
     public class IdentityHelper
     {
+        // Roles
+        public const string Administrator = "administrator";
+        public const string Customer = "customer";
+
+        /// <summary>
+        /// Creates roles if they are passed in as strings
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
+        public static async Task CreateRoles(IServiceProvider provider, params string[] roles)
+        {
+            RoleManager<IdentityRole> roleManager = provider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            foreach (string role in roles)
+            {
+                bool doesRoleExist = await roleManager.RoleExistsAsync(role);
+                if (!doesRoleExist)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+        }
+
         /// <summary>
         /// Sets Identity options for sign in procedures, passwords, and lockout options:
         /// Sign in options don't require a confirmed email or phone number.
