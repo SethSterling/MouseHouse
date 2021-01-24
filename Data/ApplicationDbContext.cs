@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using MouseHouse.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,7 @@ namespace MouseHouse.Data
             : base(options)
         {
         }
+        // DbSet for products
+        public DbSet<Product> Products { get; set; }
     }
 }
