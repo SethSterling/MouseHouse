@@ -9,7 +9,7 @@ namespace MouseHouse.Models
     /// <summary>
     /// Represents a generic item for sale
     /// </summary>
-    public class Products
+    public class Product
     {
         [Key]
         public int ProductId { get; set; }
