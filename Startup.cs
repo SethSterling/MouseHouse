@@ -94,13 +94,14 @@ namespace MouseHouse
             });
 
             // creating roles
-            // create roles
             IServiceScope serviceProvider = app.ApplicationServices
                                                .GetRequiredService<IServiceProvider>()
                                                .CreateScope();
             IdentityHelper.CreateRoles(serviceProvider.ServiceProvider,
                                        IdentityHelper.Administrator,
                                        IdentityHelper.Customer).Wait();
+            // create the default administrator
+            IdentityHelper.CreateDefaultAdministrator(serviceProvider.ServiceProvider).Wait();
         }
     }
 }

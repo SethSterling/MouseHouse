@@ -41,6 +41,33 @@ namespace MouseHouse.Models
         }
 
         /// <summary>
+        /// Creates a default administator account with an username, email, and password. 
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <returns></returns>
+        public static async Task CreateDefaultAdministrator(IServiceProvider provider)
+        {
+            const string email = "administrator@mousehouse.com";
+            const string username = "administrator";
+            const string password = "password";
+
+            var userManager = provider.GetRequiredService<UserManager<IdentityUser>>();
+
+            if (userManager.Users.Count() == 0)
+            {
+                IdentityUser administrator = new IdentityUser()
+                {
+                    Email = email,
+                    UserName = username
+                };
+
+                // creating the administrator
+                await userManager.CreateAsync(administrator, password);
+                await userManager.AddToRoleAsync(administrator, Administrator);
+            }
+        }
+
+        /// <summary>
         /// Sets Identity options for sign in procedures, passwords, and lockout options:
         /// Sign in options don't require a confirmed email or phone number.
         /// Password strength requirement is only 8 characters, no required uppercase/lowercase/digits/special characters.
