@@ -12,7 +12,8 @@ namespace MouseHouse.Models
     /// </summary>
     public class Order
     {
-        public int OrderId { get; set; }
+        [Key]
+        public int OrderNumber { get; set; }
 
 
         /// <summary>
