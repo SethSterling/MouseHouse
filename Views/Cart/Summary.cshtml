@@ -88,3 +88,11 @@
     </tbody>
     <a class="btn btn-danger" asp-route-prevUrl="@prevUrl" asp-controller="Cart" asp-action="ClearCart">Empty Cart</a>
 </table>
+<div>
+    <h4>Total: $@CartCookieHelper.GetCartTotal(http)</h4>
+    <a class="btn btn-primary"
+       asp-controller="Checkout"
+       asp-action="AddressAndPayment">
+        Proceed to Checkout
+    </a>
+</div>
