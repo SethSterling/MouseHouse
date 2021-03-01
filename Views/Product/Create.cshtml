@@ -10,7 +10,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <!-- use enctype="multipart/form-data" for forms that have an input type "file" -->
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -31,11 +32,6 @@
                 <label asp-for="Department" class="control-label"></label>
                 <input asp-for="Department" class="form-control" />
                 <span asp-validation-for="Department" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Weight" class="control-label"></label>
@@ -61,6 +57,10 @@
                 <label asp-for="Color" class="control-label"></label>
                 <input asp-for="Color" class="form-control" />
                 <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input type="file" name="image" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
