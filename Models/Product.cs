@@ -15,6 +15,7 @@ namespace MouseHouse.Models
         public int ProductId { get; set; }
 
         public string Title { get; set; }
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
         /// <summary>
         /// Type of item (eg. chair, table, sofa...)
