@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MouseHouse.Data;
 using MouseHouse.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,10 +18,13 @@ namespace MouseHouse.Controllers
     public class ProductController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _env;
 
-        public ProductController(ApplicationDbContext context)
+
+        public ProductController(ApplicationDbContext context, IWebHostEnvironment env)
         {
             _context = context;
+            _env = env;
         }
 
         public async Task<IActionResult> Index()
@@ -37,10 +43,44 @@ namespace MouseHouse.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,Title,Price,Category,Department,ImageUrl,Weight,Height,Length,Width,Color")] Product product)
+        public async Task<IActionResult> Create(Product product)
         {
+            // Remove ImageUrl, URL will be generated programmatically
+            ModelState.Remove(nameof(product.ImageUrl));
+
             if (ModelState.IsValid)
             {
+                // instantiate photo
+                IFormFile image = product.Image;
+
+                // check file extention (ensure it is a image)
+                string extension =
+                    Path.GetExtension(image.FileName);
+
+                if (extension == ".png" || extension == ".jpg")
+                {
+                    //TODO: Use ImageSharp to resize uploaded photo
+                    //https://www.hanselman.com/blog/HowDoYouUseSystemDrawingInNETCore.aspx
+
+
+                    //generate unique name to retrieve later
+                    string newFileName = Guid.NewGuid().ToString();
+
+                    //store photo on file system and reference in DB
+                    if (image.Length > 0) //ensure the file is not empty
+                    {
+                        string filePath = Path.Combine(_env.WebRootPath, "images"
+                                                    , newFileName + extension);
+                        //save location to database (in URL format) with ImageUrl property
+                        product.ImageUrl = "images/" + newFileName + extension;
+                        //write file to file system
+                        using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                        {
+                            await image.CopyToAsync(fs);
+                        }
+                    }
+                }
+                // add product to database
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

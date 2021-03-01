@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@ namespace MouseHouse.Models
         public int ProductId { get; set; }
 
         public string Title { get; set; }
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
         /// <summary>
         /// Type of item (eg. chair, table, sofa...)
@@ -28,6 +31,13 @@ namespace MouseHouse.Models
         /// URL to an image of the item 
         /// </summary>
         public string ImageUrl { get; set; }
+
+        /// <summary>
+        /// Image of the item
+        /// </summary>
+        [NotMapped] // Tell Entity Framework to ignore property
+        public IFormFile Image { get; set; }
+
         /// <summary>
         /// Weight measured in lbs
         /// </summary>
