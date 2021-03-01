@@ -40,6 +40,7 @@ namespace MouseHouse.Controllers
             _context.Orders.Add(order);
             _context.SaveChanges();
 
+            CartCookieHelper.EmptyCart(_httpContext);
             return Redirect("Complete");
         }
 
