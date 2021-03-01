@@ -15,5 +15,7 @@ namespace MouseHouse.Data
         }
         // DbSet for products
         public DbSet<Product> Products { get; set; }
+        // DbSet for orders
+        public DbSet<Order> Orders { get; set; }
     }
 }
