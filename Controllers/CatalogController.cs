@@ -20,9 +20,21 @@ namespace MouseHouse.Controllers
         }
 
         // GET: Catalog
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string colorString)
         {
-            return View(await _context.Products.ToListAsync());
+            // filterColor string is recieved from the Index view
+            ViewData["currentFilter"] = colorString;
+
+            var products = from p in _context.Products
+                           select p;
+
+            // if colorString is not empty
+            if (!String.IsNullOrEmpty(colorString))
+            {
+                products = products.Where(p => p.Color.Contains(colorString));
+            }
+
+            return View(await products.AsNoTracking().ToListAsync());
         }
 
         // GET: Catalog/Details/5
