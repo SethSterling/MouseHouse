@@ -5,6 +5,8 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    // colorString changes value when a color option is selected
+    ViewData["colorString"] = null;
 }
 
 <h1>Index</h1>
@@ -53,34 +55,45 @@
             <button type="button" class="btn btn-light btn-option" data-toggle="dropdown">Color</button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-target="#" href="/page.html">
                 <li>
-                    <a asp-action="" class="btn btn-link">White</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="White"
+                       class="btn btn-link">White</a>
                 </li>
                 <li>
-                    <a asp-action="" class="btn btn-link">Black</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Black" class="btn btn-link">Black</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Brown</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Brown" class="btn btn-link">Brown</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Grey</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Grey"  class="btn btn-link">Grey</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Green</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Green"  class="btn btn-link">Green</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Beige</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Beige"  class="btn btn-link">Beige</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Yellow</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Yellow"  class="btn btn-link">Yellow</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Blue</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Blue"  class="btn btn-link">Blue</a>
                 </li>
                 <li>
-                    <a asp-action=""  class="btn btn-link">Red</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Red"  class="btn btn-link">Red</a>
                 </li>
                 <li>
-                    <a asp-action="" class="btn btn-link">Turquoise</a>
+                    <a asp-action="Index"
+                       asp-route-colorString="Turquoise" class="btn btn-link">Turquoise</a>
                 </li>
             </ul>
         </li>
