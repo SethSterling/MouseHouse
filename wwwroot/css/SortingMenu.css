@@ -8,75 +8,36 @@
     align-content: center;
     text-align: center;
     width: 100%;
+    padding: 2em 0em 2em 0em;
 }
 
 /* Unordered list of all the sorting options/filters */
 .option-list {
-    position: sticky;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
-    border: 1px solid#e7e7e7;
-    background-color: #f3f3f3;
+    margin: 0;
+    padding: 1em 0em 1em 0em;
+    border-bottom: 1px solid darkgray;
 }
 
 /* List item inside unordered list containing a sorting option/filter */
 .option {
-    margin: auto;
     padding: 1em;
     float: left;
     text-align: center;
     padding: 14px 16px;
-    height: 100%;
     text-decoration: none;
     color: #666;
+    height: 100%;
+    margin: auto;
+    text-align: center;
 }
+
 
 /* Buttons inside of the option-menu div */
-.option-menu > option button {
-    vertical-align: middle;
-    display: inline-block;
-    line-height: 1.2em;
-}
-
-/*
-   CSS for the dropdown button for the sorting option Price
-    Price has two options to sort/filter from :
-    - Lowest to Highest
-    - Highest to Lowest
-*/
-
-/* Div for list items that have dropdown options */
-li.dropdown {
-    display: inline-block;
-}
-
-/* Div for dropdown options in a list item */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links of the dropdown options in a list item */
-.dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-align: left;
-}
-
-/* Hovering links of dropdown options in a list item */
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-/* When hovering over the dropdown div, the dropdown options display */
-.dropdown:hover .dropdown-content {
-    display: block;
+.btn-option {
+    background-color: #f2f2f2;
+    color: #111;
+    border-radius: 64px;
+    padding: 0.7em 1.12em 0.7em 1.12em;
 }
