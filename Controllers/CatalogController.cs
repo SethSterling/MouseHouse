@@ -23,7 +23,7 @@ namespace MouseHouse.Controllers
         public async Task<IActionResult> Index(string colorString)
         {
             // filterColor string is recieved from the Index view
-            ViewData["currentFilter"] = colorString;
+            ViewData["currentColorFilter"] = colorString;
 
             var products = from p in _context.Products
                            select p;
