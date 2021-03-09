@@ -9,30 +9,103 @@
 
 <h1>Index</h1>
 
-@{ 
+<!-- Sorting section displaying different options for sorting/filtering products on Catalog page -->
+<div class="option-menu">
+    <ul class="option-list">
+        <!-- Price -->
+        <l1 class="option">
+            <button type="button" class="btn btn-light btn-option" data-toggle="dropdown">Price</button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-target="#" href="/page.html">
+                <!-- Price: Lowest to Highest -->
+                <li>
+                    <button type="button" class="btn btn-link">Low to High</button>
+                </li>
+                <!-- Price: Higest to Lowest -->
+                <li>
+                    <button type="button" class="btn btn-link">High to Low</button>
+                </li>
+            </ul>
+        </l1>
+
+        <!-- Name / Title  (alphabetical) -->
+        <li class="option">
+            <button type="button" class="btn btn-light btn-option">Name</button>
+        </li>
+        <!-- Width (most to least amount of inches wide)-->
+        <li class="option">
+            <button type="button" class="btn btn-light btn-option">Width</button>
+        </li>
+        <!-- Height (most to least amount of inches tall) -->
+        <li class="option">
+            <button type="button" class="btn btn-light btn-option">Height</button>
+        </li>
+        <!-- Deph (most to least inches deep)-->
+        <li class="option">
+            <button type="button" class="btn btn-light btn-option">Deph</button>
+        </li>
+        <!-- Color (different colors to choose) -->
+        <li class="option">
+            <button type="button" class="btn btn-light btn-option" data-toggle="dropdown">Color</button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-target="#" href="/page.html">
+                <li>
+                    <button type="button" class="btn btn-link">White</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Black</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Brown</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Grey</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Green</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Beige</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Yellow</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Blue</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Red</button>
+                </li>
+                <li>
+                    <button type="button" class="btn btn-link">Turquoise</button>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+@{
     string prevUrl = http.HttpContext.Request.Path;
 }
-@foreach(var item in Model)
+@foreach (var item in Model)
 {
-        <div class="card card-body">
-            @{
-                string ImagePath = item.ImageUrl;
-            }
-            <a asp-action="Details" asp-route-id="@item.ProductId">
-                <div class="card-image">
-                    <img src="~/@ImagePath" />
-                </div>
-            </a>
-            <h5 class="card-title card border-light">@item.Title</h5>
-            <p class="card-category">@item.Category</p>
-            <p class="card-price">$@item.Price</p>
-            <div class="card-cart">
-                <a class="btn btn-outline-primary" asp-route-id="@item.ProductId" asp-route-prevUrl="@prevUrl" asp-controller="Cart" asp-action="Add">
-                    <!-- Cart icon -->
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
-                    </svg>
-                </a>
+    <div class="card card-body">
+        @{
+            string ImagePath = item.ImageUrl;
+        }
+        <a asp-action="Details" asp-route-id="@item.ProductId">
+            <div class="card-image">
+                <img src="~/@ImagePath" />
             </div>
+        </a>
+        <h5 class="card-title card border-light">@item.Title</h5>
+        <p class="card-category">@item.Category</p>
+        <p class="card-price">$@item.Price</p>
+        <div class="card-cart">
+            <a class="btn btn-outline-primary" asp-route-id="@item.ProductId" asp-route-prevUrl="@prevUrl" asp-controller="Cart" asp-action="Add">
+                <!-- Cart icon -->
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cart-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM4 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm7 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z" />
+                </svg>
+            </a>
         </div>
+    </div>
 }
