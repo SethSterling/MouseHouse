@@ -53,33 +53,9 @@ namespace MouseHouse.Controllers
                 // instantiate photo
                 IFormFile image = product.Image;
 
-                // check file extention (ensure it is a image)
-                string extension =
-                    Path.GetExtension(image.FileName);
+                // save image to system
+                ImageHelper.SaveImage(product, _env);
 
-                if (extension == ".png" || extension == ".jpg")
-                {
-                    //TODO: Use ImageSharp to resize uploaded photo
-                    //https://www.hanselman.com/blog/HowDoYouUseSystemDrawingInNETCore.aspx
-
-
-                    //generate unique name to retrieve later
-                    string newFileName = Guid.NewGuid().ToString();
-
-                    //store photo on file system and reference in DB
-                    if (image.Length > 0) //ensure the file is not empty
-                    {
-                        string filePath = Path.Combine(_env.WebRootPath, "images"
-                                                    , newFileName + extension);
-                        //save location to database (in URL format) with ImageUrl property
-                        product.ImageUrl = "images/" + newFileName + extension;
-                        //write file to file system
-                        using (FileStream fs = new FileStream(filePath, FileMode.Create))
-                        {
-                            await image.CopyToAsync(fs);
-                        }
-                    }
-                }
                 // add product to database
                 _context.Add(product);
                 await _context.SaveChangesAsync();
