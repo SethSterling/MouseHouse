@@ -10,72 +10,77 @@
 <h1>Index</h1>
 
 <!-- Sorting section displaying different options for sorting/filtering products on Catalog page -->
+<!-- TODO: inside the <a> tags, redirect the user to the page again with a sorted list of Products-->
 <div class="option-menu">
     <ul class="option-list">
         <!-- Price -->
         <l1 class="option">
             <button type="button" class="btn btn-light btn-option" data-toggle="dropdown">Price</button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-target="#" href="/page.html">
-                <!-- Price: Lowest to Highest -->
+                <!-- Price: Lowest to Highest (ascending)-->
                 <li>
-                    <button type="button" class="btn btn-link">Low to High</button>
+                    <a asp-action="" class="btn btn-link">Low to High</a>
                 </li>
-                <!-- Price: Higest to Lowest -->
+                <!-- Price: Higest to Lowest (descending)-->
                 <li>
-                    <button type="button" class="btn btn-link">High to Low</button>
+                    <a asp-action="" class="btn btn-link">High to Low</a>
                 </li>
             </ul>
         </l1>
 
-        <!-- Name / Title  (alphabetical) -->
+        <!-- Name / Title  (alphabetical/ascending) -->
         <li class="option">
-            <button type="button" class="btn btn-light btn-option">Name</button>
+                <a asp-action="" class="btn btn-light btn-option">Name</a>
         </li>
-        <!-- Width (most to least amount of inches wide)-->
+
+        <!-- Width (most to least amount of inches wide/descending )-->
         <li class="option">
-            <button type="button" class="btn btn-light btn-option">Width</button>
+            <a asp-action="" class="btn btn-light btn-option">Width</a>
         </li>
-        <!-- Height (most to least amount of inches tall) -->
+
+        <!-- Height (most to least amount of inches tall/descending ) -->
         <li class="option">
-            <button type="button" class="btn btn-light btn-option">Height</button>
+            <a asp-action="" class="btn btn-light btn-option">Height</a>
         </li>
-        <!-- Deph (most to least inches deep)-->
+
+        <!-- Deph (most to least inches deep/descending )-->
         <li class="option">
-            <button type="button" class="btn btn-light btn-option">Deph</button>
+            <a asp-action="" class="btn btn-light btn-option">Depth</a>
         </li>
+
         <!-- Color (different colors to choose) -->
         <li class="option">
             <button type="button" class="btn btn-light btn-option" data-toggle="dropdown">Color</button>
             <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-target="#" href="/page.html">
                 <li>
-                    <button type="button" class="btn btn-link">White</button>
+                    <a asp-action="" class="btn btn-link">White</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Black</button>
+                    <a asp-action="" class="btn btn-link">Black</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Brown</button>
+                    <a asp-action=""  class="btn btn-link">Brown</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Grey</button>
+                    <a asp-action=""  class="btn btn-link">Grey</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Green</button>
+                    <a asp-action=""  class="btn btn-link">Green</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Beige</button>
+                    <a asp-action=""  class="btn btn-link">Beige</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Yellow</button>
+                    <a asp-action=""  class="btn btn-link">Yellow</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Blue</button>
+                    <a asp-action=""  class="btn btn-link">Blue</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Red</button>
+                    <a asp-action=""  class="btn btn-link">Red</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-link">Turquoise</button>
+                    <a asp-action="" class="btn btn-link">Turquoise</a>
                 </li>
             </ul>
         </li>
