@@ -20,13 +20,45 @@ namespace MouseHouse.Controllers
         }
 
         // GET: Catalog
-        public async Task<IActionResult> Index(string colorString)
+        public async Task<IActionResult> Index(string colorString, string sortOrder)
         {
             // filterColor string is recieved from the Index view
-            ViewData["currentColorFilter"] = colorString;
+            ViewData["currentColorFilter"] = String.IsNullOrEmpty(colorString) ? "" : colorString;
+            // sortOrder string is recieved from the Index view
+            ViewData["currentSort"] = String.IsNullOrEmpty(sortOrder) ? "" : sortOrder;
 
             var products = from p in _context.Products
                            select p;
+
+            // if sortOrder is not empty
+            if (!String.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "low_price":
+                        products = products.OrderBy(p => p.Price);
+                        break;
+                    case "high_price":
+                        products = products.OrderByDescending(p => p.Price);
+                        break;
+                    case "alphabetical":
+                        products = products.OrderBy(p => p.Title);
+                        break;
+                    case "width":
+                        products = products.OrderByDescending(p => p.Width);
+                        break;
+                    case "height":
+                        products = products.OrderByDescending(p => p.Height);
+                        break;
+                    case "length":
+                        products = products.OrderByDescending(p => p.Length);
+                        break;
+
+
+                    default:
+                        break;
+                }
+            }
 
             // if colorString is not empty
             if (!String.IsNullOrEmpty(colorString))
