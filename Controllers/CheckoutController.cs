@@ -36,18 +36,33 @@ namespace MouseHouse.Controllers
 
             order.Username = User.Identity.Name;
             order.OrderDate = DateTime.Now;
+            order.Total = (decimal)CartCookieHelper.GetCartTotal(_httpContext);
+
 
             _context.Orders.Add(order);
             _context.SaveChanges();
 
             CartCookieHelper.EmptyCart(_httpContext);
-            return Redirect("Complete");
+            return RedirectToAction("Complete",
+                new { id = order.OrderNumber});
         }
 
         // GET: Checkout/Complete
-        public IActionResult Complete()
+        public IActionResult Complete(int id)
         {
-            return View();
+            // validate customer owns this order
+            bool isValid = _context.Orders.Any(
+                o => o.OrderNumber == id &&
+                o.Username == User.Identity.Name);
+
+            if (isValid)
+            {
+                return View(id);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
     }
 }
