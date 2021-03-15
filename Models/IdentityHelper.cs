@@ -77,8 +77,9 @@ namespace MouseHouse.Models
         public static void SetIdentityOptions(IdentityOptions options)
         {
             // sign in options
-            options.SignIn.RequireConfirmedEmail = false;
+            options.SignIn.RequireConfirmedEmail = true;
             options.SignIn.RequireConfirmedPhoneNumber = false;
+            options.SignIn.RequireConfirmedAccount = true;
 
             // password options
             options.Password.RequireDigit = false;
