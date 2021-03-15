@@ -134,6 +134,14 @@
                 </li>
             </ul>
         </li>
+
+        <!-- Resets all options/filters applied to view (shows default page)-->
+        <li class="option">
+            <a asp-action="Index"
+               asp-route-colorString=@String.Empty
+               asp-route-sortOrder=@String.Empty
+               class="btn btn-light btn-option">Clear</a>
+        </li>
     </ul>
 </div>
 
