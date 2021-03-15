@@ -43,6 +43,6 @@
     font-weight: bold;
 }
 
-.btn {
-    color: lightgray;
+.row-body > a {
+    color: #9c9c9c;
 }
