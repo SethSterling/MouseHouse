@@ -29,9 +29,7 @@ namespace MouseHouse.Services
 
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            // get the sendgrid api key
-            var sendGridKey = Environment.GetEnvironmentVariable("SENDGRID_API_KEY");
-            return Execute(sendGridKey, subject, htmlMessage, email);
+            return Execute(Options.SendGridKey, subject, htmlMessage, email);
         }
 
 
