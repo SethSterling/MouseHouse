@@ -1,8 +1,7 @@
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,9 +9,7 @@ using Microsoft.Extensions.Hosting;
 using MouseHouse.Data;
 using MouseHouse.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using MouseHouse.Services;
 
 namespace MouseHouse
 {
@@ -34,8 +31,19 @@ namespace MouseHouse
             services.AddDefaultIdentity<IdentityUser>(IdentityHelper.SetIdentityOptions)
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // set EmailSender as a Transient service
+            // requires:
+            // using AspNetCoreEmailConfirmationSendGrid.Services;
+            // using Microsoft.AspNetCore.Identity.UI.Services;
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
         }
 
         /// <summary>
