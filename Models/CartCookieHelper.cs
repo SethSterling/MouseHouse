@@ -100,6 +100,26 @@ namespace MouseHouse
             // return the total
             return total;
         }
+
+        /// <summary>
+        /// Returns true if cart is empty
+        /// </summary>
+        /// <param name="http"></param>
+        /// <returns></returns>
+        public static bool IsCartEmpty(IHttpContextAccessor http)
+        {
+            // get all products from cart
+            List<Product> cartProducts = GetCartProducts(http);
+            // if the cart has a count of 0 products, return true
+            if (cartProducts.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
 
