@@ -1,13 +1,15 @@
-﻿using SendGrid;
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.Extensions.Options;
+using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MouseHouse.Models
+namespace MouseHouse.Services
 {
-    public class EmailSender
+    public class EmailSender : IEmailSender
     {
         /// <summary>
         /// Offical email account for the MouseHouse enterprise
@@ -18,6 +20,12 @@ namespace MouseHouse.Models
         /// Name attached to the offical email account for the MouseHouse enterprise
         /// </summary>
         const string MouseHouseName = "MouseHouse Support";
+
+        public EmailSender(IOptions<AuthMessageSenderOptions> optionsAccessor)
+        {
+            Options = optionsAccessor.Value;
+        }
+        public AuthMessageSenderOptions Options { get; } // set only viea Secret Manager
 
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
