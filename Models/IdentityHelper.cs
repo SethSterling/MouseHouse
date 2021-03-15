@@ -79,6 +79,7 @@ namespace MouseHouse.Models
             // sign in options
             options.SignIn.RequireConfirmedEmail = true;
             options.SignIn.RequireConfirmedPhoneNumber = false;
+            options.SignIn.RequireConfirmedAccount = true;
 
             // password options
             options.Password.RequireDigit = false;
