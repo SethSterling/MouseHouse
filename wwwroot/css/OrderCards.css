@@ -1,0 +1,43 @@
+﻿
+
+.order-body {
+    border: solid rgb(160, 160, 160) 2px;
+    border-radius: 6px;
+    float: left;
+    width: 70%;
+    margin-bottom: 3em;
+}
+
+.order-info {
+    border-bottom: solid rgb(139, 139, 139) 1px;
+    background-color: #f6f6f6;
+    display: flex;
+    padding-bottom: 1em;
+}
+
+    .order-info > .info {
+        flex: 1;
+        padding: 0.5em;
+    }
+
+.order-date > h3 {
+    margin-left: 0.5em;
+}
+
+.order-date > .date {
+    font-size: medium;
+    margin: 0.5em 0em 0em 0.5em;
+}
+
+.order-number > h3 {
+    float: left;
+    margin-left: 65%;
+}
+
+.order-number > .number {
+    margin-left: 0.2em;
+}
+
+.order-number > a {
+    margin-left: 65%;
+}
