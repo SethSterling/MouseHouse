@@ -10,17 +10,18 @@
     @ViewData["name"]
 </p>
 
+
 @foreach (var item in Model)
 {
     <div class="order-body">
         <div class="order-info">
             <div class="info order-date">
                 <h4>Order Date:</h4>
-                <h4 class="date">@Html.DisplayFor(modelItem => item.OrderDate)</h4>
+                <h4 class="date">@item.OrderDate</h4>
             </div>
             <div class="info order-number">
                 <h4>Order #</h4>
-                <h4 class="number">@Html.DisplayFor(modelItem => item.OrderNumber)</h4>
+                <h4 class="number">@item.OrderNumber</h4>
                 <a asp-action="Details" asp-route-id="@item.OrderNumber">View Order details</a>
             </div>
         </div>
@@ -30,3 +31,4 @@
         </div>
     </div>
 }
+

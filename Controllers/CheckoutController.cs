@@ -37,7 +37,7 @@ namespace MouseHouse.Controllers
             order.Username = User.Identity.Name;
             order.OrderDate = DateTime.Now;
             order.Total = (decimal)CartCookieHelper.GetCartTotal(_httpContext);
-            order.PurchasedProducts = CartCookieHelper.GetCartProducts(_httpContext);
+
 
             _context.Orders.Add(order);
             _context.SaveChanges();
