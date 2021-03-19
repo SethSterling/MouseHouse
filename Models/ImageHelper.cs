@@ -29,7 +29,7 @@ namespace MouseHouse.Models
             string extension =
                 Path.GetExtension(image.FileName);
 
-            if (extension == ".png" || extension == ".jpg")
+            if (extension == ".png" || extension == ".jpg" || extension == ".jpeg")
             {
                 //generate unique name to retrieve later
                 string newFileName = Guid.NewGuid().ToString();
