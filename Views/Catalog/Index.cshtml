@@ -161,7 +161,7 @@
         </a>
         <h5 class="card-title card border-light">@item.Title</h5>
 <p class="card-category">@item.Category</p>
-        <p class="card-price">$@item.Price</p>
+        <p class="card-price">$@Math.Round(item.Price, 2)</p>
         <div class="card-cart">
             <a class="btn btn-outline-primary" asp-route-id="@item.ProductId" asp-route-prevUrl="@prevUrl" asp-controller="Cart" asp-action="Add">
                 <!-- Cart icon -->
