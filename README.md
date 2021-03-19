@@ -16,7 +16,9 @@ For the administators of the site, adding/editing/removing products to the catal
 ## Features
 - Customer & Adminstator accounts
 - SENDGRID API to confirm user accounts
+
 ![image](https://user-images.githubusercontent.com/63821532/111828283-519c1980-88a8-11eb-88d1-d1c81c595a91.png)
+
 - Full CRUD functionality for products (for administator accounts)
 
 ![image](https://user-images.githubusercontent.com/63669378/111740338-d0aa3700-8841-11eb-87f0-84b73ae99567.png)
