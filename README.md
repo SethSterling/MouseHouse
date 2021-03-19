@@ -5,7 +5,7 @@ MouseHouse is an ASP.NET Core MVC e-commerce website selling collections of furn
 MouseHouse offers an easy shopping experience for the customer complete with a comprehensible catalog page, a shopping cart, and checkout process. 
 For the administators of the site, adding/editing/removing products to the catalog is a breeze.
 
-[screenshot of the catalog page]
+![image](https://user-images.githubusercontent.com/63669378/111740814-a0af6380-8842-11eb-9171-e14d1d2c6e04.png)
 
 ## Technologies
 - ASP.NET Core Framework
@@ -19,13 +19,21 @@ For the administators of the site, adding/editing/removing products to the catal
 - SENDGRID API to confirm user accounts
 [screenshot of confirmation email]
 - Full CRUD functionality for products (for administator accounts)
-[screenshot of products index page]
+
+![image](https://user-images.githubusercontent.com/63669378/111740338-d0aa3700-8841-11eb-87f0-84b73ae99567.png)
+
 - Catalog page complete with sorting/filtering options
-[screnshot of catalog page]
+
+![image](https://user-images.githubusercontent.com/63669378/111740407-f46d7d00-8841-11eb-871d-0b2574c0e913.png)
+
 - Shopping cart functionality
-[screenshot of shopping cart view]
+
+![image](https://user-images.githubusercontent.com/63669378/111740495-17982c80-8842-11eb-939d-e7f09c9b1038.png)
+
 - Checkout process to purchase items in shopping cart
-[screenshot of the checkout page]
+
+![image](https://user-images.githubusercontent.com/63669378/111740642-57f7aa80-8842-11eb-9abe-4c84d53c9cd1.png)
+
 - Bootstrap styling
 
 ## Installation
